@@ -35,7 +35,7 @@ const formattedBudget = (budget) => {
   } else if (budget >= 1_000_000_000_000 && budget < 1_000_000_000_000_000) {
     return (budget / 1_000_000_000_000).toFixed(1) + "T";
   }
-}
+}//https://www.freecodecamp.org/news/format-compact-numbers-with-javascript/
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
