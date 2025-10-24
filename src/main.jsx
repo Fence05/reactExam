@@ -49,4 +49,3 @@ const App = () => {
 
 const rootElement = createRoot(document.getElementById("root"))
 rootElement.render(<App />);
-//dawda

@@ -8,7 +8,8 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
-import MovieReviews from "../movieReviews"
+import MovieReviews from "../movieReviews";
+import SavingsIcon from '@mui/icons-material/Savings';
 
 
 const root = {
@@ -20,6 +21,21 @@ const root = {
   margin: 0,
 };
 const chip = { margin: 0.5 };
+const formattedBudget = (budget) => {
+  if (!budget) return null;
+
+  else if (budget < 1000) {
+    return budget;
+  } else if (budget >= 1000 && budget < 1_000_000) {
+    return (budget / 1000).toFixed(1) + "K";
+  } else if (budget >= 1_000_000 && budget < 1_000_000_000) {
+    return (budget / 1_000_000).toFixed(1) + "M";
+  } else if (budget >= 1_000_000_000 && budget < 1_000_000_000_000) {
+    return (budget / 1_000_000_000).toFixed(1) + "B";
+  } else if (budget >= 1_000_000_000_000 && budget < 1_000_000_000_000_000) {
+    return (budget / 1_000_000_000_000).toFixed(1) + "T";
+  }
+}
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -59,6 +75,10 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           label={`${movie.vote_average} (${movie.vote_count})`}
         />
         <Chip label={`Released: ${movie.release_date}`} />
+        <Chip
+          icon={<SavingsIcon />}
+          label={`Budget: $${formattedBudget(movie.budget)}`}
+        />
       </Paper>
 
       <Fab
